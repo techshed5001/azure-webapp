@@ -1,0 +1,1 @@
+echo "{\"my_ip\": \"$(curl -s ifconfig.me)\"}"
