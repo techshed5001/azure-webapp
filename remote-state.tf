@@ -3,7 +3,7 @@ az account show 1> /dev/null || az login
 
 rg=azure-webapp-rg
 sa=azurewebappsa
-container=tfpracticecontainer
+container=azurewebappco
 
 # Resource group
 az group create --name $rg --location eastus --tags 'Project=Terraform' 'Env=Demo'
