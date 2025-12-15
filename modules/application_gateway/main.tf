@@ -1,19 +1,3 @@
-/* 
-  This Terraform module creates an Azure Application Gateway with a public IP address, 
-  a backend address pool, an HTTP listener, and a request routing rule. 
-
-  The module takes the following input variables:
-  - app_gateway_name: The name of the application gateway to create.
-  - resource_group_name: The name of the resource group in which to create the application gateway.
-  - location: The Azure region in which to create the application gateway.
-  - app_gateway_subnet_id: The ID of the subnet in which to deploy the application gateway.
-
-  The module creates the following resources:
-  - azurerm_public_ip.app_gateway_public_ip: A public IP address for the application gateway.
-  - azurerm_application_gateway.network: The application gateway itself, with a backend address pool, 
-    an HTTP listener, and a request routing rule.
-*/
-
 resource "azurerm_public_ip" "app_gateway_public_ip" {
   name                = "${var.app_gateway_name}-publicip"
   resource_group_name = var.resource_group_name

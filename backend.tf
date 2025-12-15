@@ -1,8 +1,8 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = "terraform-state-rg"
-    storage_account_name = "tfpracticestorage"
-    container_name       = "tfpracticecontainer"
+    resource_group_name  = "azure-webapp-rg"
+    storage_account_name = "azurewebappsa"
+    container_name       = "azurewebappco"
     key                  = "./terraform.tfstate"
   }
 }
