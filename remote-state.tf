@@ -1,15 +1,22 @@
 # Login to Azure (if not already logged in)
-az account show 1> /dev/null || az login
+terraform {
+  backend "azurerm" {
+    # The name of the Azure Storage account
+    storage_account_name = "exampletfstateaccount"
 
-rg=azure-webapp-rg
-sa=azurewebappsa
-container=azurewebappco
+    # The name of the Blob Container within the storage account
+    container_name = "tfstate"
 
-# Resource group
-az group create --name $rg --location eastus --tags 'Project=Terraform' 'Env=Demo'
+    # The path/name of the state file within the container
+    key = "prod/terraform.tfstate"
 
-# account
-az storage account create --resource-group $rg --name $sa --sku Standard_LRS --encryption-services blob
+    # The name of the Resource Group where the storage account exists
+    resource_group_name = "example-tfstate-rg"
 
-# container
-az storage container create --name $container --account-name $sa
+    # Optional: Authentication via Azure CLI
+    # use_cli = true
+
+    # Optional: Authentication via Azure AD (requires specific permissions)
+    # use_azuread_auth = true
+  }
+}
